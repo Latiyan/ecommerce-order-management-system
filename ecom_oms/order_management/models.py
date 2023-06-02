@@ -8,7 +8,7 @@ from common.order_status import OrderStatus
 class Order(models.Model):
     """ Order model """
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    order_status = models.IntegerField(db_index=True, choices=OrderStatus.choices, default=OrderStatus.PENDING)
+    order_status = models.TextField(db_index=True, choices=OrderStatus.choices, default=OrderStatus.PENDING)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
