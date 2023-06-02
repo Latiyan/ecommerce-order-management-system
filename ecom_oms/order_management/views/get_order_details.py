@@ -11,7 +11,8 @@ class GetOrderDetailsView(APIView):
 
             order = Order.objects.get(id=order_id)
         except Order.DoesNotExist:
-            raise Exception("Order does not exists")
+            return Response({"status": 0,
+                             "message": "Order does not exist, please check the order ID."})
 
         details = {
             "order_id": order.id,

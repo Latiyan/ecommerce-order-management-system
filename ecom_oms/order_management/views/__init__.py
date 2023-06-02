@@ -1,3 +1,4 @@
 from order_management.views.create_order import CreateOrderView
 from order_management.views.order_listing import OrderListingView
 from order_management.views.get_order_details import GetOrderDetailsView
+from order_management.views.update_order_status import UpdateOrderStatusView

@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from common.order_status import OrderStatus
 
 
 class ItemsRequest(serializers.Serializer):
@@ -11,5 +12,5 @@ class ItemsRequest(serializers.Serializer):
 class CreateOrderRequest(serializers.Serializer):
     """ Request serializer for Create Order Request """
     user = serializers.IntegerField(min_value=1)
-    status = serializers.CharField(max_length=150)
+    status = serializers.ChoiceField(choices=OrderStatus.choices)
     cart = ItemsRequest(many=True)
