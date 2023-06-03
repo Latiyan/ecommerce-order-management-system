@@ -13,4 +13,4 @@ class CreateOrderRequest(serializers.Serializer):
     """ Request serializer for Create Order Request """
     user = serializers.IntegerField(min_value=1)
     status = serializers.ChoiceField(choices=OrderStatus.choices)
-    cart = ItemsRequest(many=True)
+    items = ItemsRequest(many=True)

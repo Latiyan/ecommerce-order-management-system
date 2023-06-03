@@ -26,7 +26,7 @@ class UpdateOrderStatusView(APIView):
             order = Order.objects.get(id=req_order_dict["order_id"])
 
             order.order_status = req_order_dict["status"]
-            order.save(update_fields=['order_status'])
+            order.save(update_fields=['order_status', 'updated_at'])
 
         except Exception as e:
             return Response({"status": 0,
