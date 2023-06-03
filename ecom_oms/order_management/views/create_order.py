@@ -3,10 +3,17 @@ from rest_framework.response import Response
 from django.contrib.auth.models import User
 from order_management.models import Order, OrderItem
 from order_management.serializers.requests import CreateOrderRequest
+from common.order_management_authenticate import order_management_authenticate
+from django.utils.decorators import method_decorator
 
 
 class CreateOrderView(APIView):
     """ Create Order View """
+
+    @method_decorator(order_management_authenticate)
+    def dispatch(self, *args, **kwargs):
+        """ Authenticate token and add appropriate attributes to request object """
+        return super().dispatch(*args, **kwargs)
 
     def post(self, request, *args, **kwargs):
 
@@ -47,7 +54,6 @@ class CreateOrderView(APIView):
 
         # For each item in the request create an order item and associate it with the order
         for item in data["items"]:
-
             order_item = OrderItem(order=order, name=item["name"], quantity=item["quantity"], price=item["price"])
             order_item.save()
 

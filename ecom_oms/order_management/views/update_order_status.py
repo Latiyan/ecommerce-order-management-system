@@ -2,10 +2,17 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from order_management.models import Order
 from order_management.serializers.requests import UpdateOrderStatusRequest
+from common.order_management_authenticate import order_management_authenticate
+from django.utils.decorators import method_decorator
 
 
 class UpdateOrderStatusView(APIView):
     """ Update order status """
+
+    @method_decorator(order_management_authenticate)
+    def dispatch(self, *args, **kwargs):
+        """ Authenticate token and add appropriate attributes to request object """
+        return super().dispatch(*args, **kwargs)
 
     def put(self, request, *args, **kwargs):
 
