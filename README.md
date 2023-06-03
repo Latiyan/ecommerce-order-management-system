@@ -33,4 +33,4 @@ Run migrations & server:
 Now the server is up and running on http://127.0.0.1:8000/.
 
 # Headers Authentication for POST and PUT APIs
-Authorization: Token pSaowjfdf2WPOkjr3o445ml098klmcpojfqPdoq3pweG
+Authorization: Token pSaowjfdf2WPOkjr3o445ml098klmcpojfqPdoq3pweGF
